@@ -1,5 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
- <p>Body</p>
+
+{% for job in jobs.all %}
+
+
+<div class="col-md-4">
+  <div class="card mb-4 box-shadow">
+    <img class="card-img-top img-fluid" src="{{ job.image.url }}" alt="Job Image">
+    <div class="card-body">
+      <p class="card-text">{{ job.summary }}</p>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
 {% endblock %}
