@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
+
 {% block jumbotron %}
   <section class="jumbotron text-center">
     <div class="container">
       <h1 class="jumbotron-heading">Hi, I am Moses!</h1>
       <p class="lead text-muted">
-        Here are my Jobs.
+        Here are my Blogs.
       </p>
       <p>
         <a href="mailto:muraguri64@gmail.com" class="btn btn-primary my-2">Email Me</a>
@@ -16,14 +17,14 @@
 
 {% block content %}
 
-{% for job in jobs.all %}
+{% for blog in blogs.all %}
 
 
 <div class="col-md-4">
   <div class="card mb-4 box-shadow shadow p-3 mb-5 bg-white rounded">
-    <img class="card-img-top img-fluid" src="{{ job.image.url }}" alt="Job Image">
+    <img class="card-img-top img-fluid" src="{{ blog.image.url }}" alt="Job Image">
     <div class="card-body">
-      <p class="card-text">{{ job.summary }}</p>
+      <p class="card-text">{{ blog.body }}</p>
       <div class="d-flex justify-content-between align-items-center">
         <div class="btn-group">
           <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
