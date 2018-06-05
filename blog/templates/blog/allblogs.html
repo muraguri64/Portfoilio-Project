@@ -21,14 +21,16 @@
 
 
 <div class="col-md-4">
-  <div class="card mb-4 box-shadow shadow p-3 mb-5 bg-white rounded">
-    <img class="card-img-top img-fluid" src="{{ blog.image.url }}" alt="Job Image">
+  <div class="card mb-4 box-shadow">
+    <img class="card-img-top img-fluid" src="{{ blog.image.url }}" alt="Blog Image">
     <div class="card-body">
-      <p class="card-text">{{ blog.body }}</p>
+      <h5>{{ blog.title }}</h5>
+      <p class="card-text">{{ blog.summary }}</p>
       <div class="d-flex justify-content-between align-items-center">
         <div class="btn-group">
-          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+          <a href="/blog/{{ blog.id }}" class="btn btn-sm btn-outline-secondary">Read More</a>
         </div>
+         <small class="text-muted">{{ blog.pub_date_pretty }}</small>
       </div>
     </div>
   </div>

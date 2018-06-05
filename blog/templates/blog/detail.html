@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+
+
+<div class="col-md-8 offset-md-1">
+  <div class="card mb-4 box-shadow">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h5>{{ blog.title }}</h5>
+      <small class="text-muted">{{ blog.pub_date_pretty }}</small>
+    </div>
+    <img class="card-img-top img-fluid" src="{{ blog.image.url }}" alt="Blog Image" height="200px">
+    <div class="card-body">
+
+      <p class="card-text">{{ blog.body }}</p>
+
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
