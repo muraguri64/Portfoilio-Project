@@ -10,4 +10,5 @@ class blogInfoAdmin(admin.ModelAdmin):
     def body_summary(self,obj):
         return obj.body[:50] + "..."
 
+    body_summary.short_description = 'Summary'
 admin.site.register(Blog, blogInfoAdmin)
