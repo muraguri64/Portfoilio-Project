@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
+from django.http import JsonResponse
 
 
 from .models import Blog
@@ -19,17 +20,29 @@ def details(request, blog_id):
 @login_required
 def create(request):
     if request.method == "POST":
-        if request.POST['title'] and request.POST['body'] and request.FILES['image']:
-            blog = Blog()
-            blog.title    = request.POST['title']
-            blog.image    = request.FILES['image']
-            blog.body     = request.POST['body']
-            blog.pub_date = timezone.datetime.now()
+        if request.is_ajax:
 
-            blog.save()
-            return redirect('allblogs')
+            if request.POST['title'] and request.POST['body'] and request.FILES['image']:
+                blog = Blog()
+                blog.title    = request.POST['title']
+                blog.image    = request.FILES['image']
+                blog.body     = request.POST['body']
+                blog.pub_date = timezone.datetime.now()
+
+                blog.save()
+                return JsonResponse({"message": "success"})
+            else:
+                return JsonResponse({"error": "Please fill all fields!"})
         else:
-             return render(request,'blog/create.html',{'error':'All fields are required'})
+            if request.POST['title'] and request.POST['body'] and request.FILES['image']:
+                blog = Blog()
+                blog.title    = request.POST['title']
+                blog.image    = request.FILES['image']
+                blog.body     = request.POST['body']
+                blog.pub_date = timezone.datetime.now()
+
+                blog.save()
+                return redirect('allblogs')
 
     else:
         return render(request,'blog/create.html')
