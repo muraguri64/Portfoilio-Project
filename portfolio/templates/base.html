@@ -36,8 +36,15 @@
             <li class="dropdown {% if url_name == 'alljobs' %}active{% endif %}">
               <a class="nav-link" href="{% url 'alljobs' %}">Jobs</a>
             </li>
-            <li class="dropdown {% if url_name == 'allblogs' %}active{% endif %}">
-              <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle {% if url_name == 'allblogs' %}active {% elif url_name == 'create_blog' %} active {% endif %}" href="#" id="navbardrop" data-toggle="dropdown">
+                Blog
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item {% if url_name == 'allblogs' %}active{% endif %}" href="{% url 'allblogs' %}">All Blogs</a>
+                <a class="dropdown-item {% if url_name == 'create_blog' %}active{% endif %}" href="{% url 'create_blog' %}">Create Blog</a>
+              </div>
             </li>
 
             {% if user.is_authenticated %}
@@ -102,7 +109,7 @@
   <!-- Placed at the end of the document so the pages load faster -->
 
 
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
